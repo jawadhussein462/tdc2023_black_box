@@ -9,9 +9,9 @@ import random
 from tqdm import tqdm 
 from random import shuffle
 
-from score_function import score_llm
-from bayesian_optimazation_models import SurrogateModel, AcquisitionFunction
-from loss_functions import PairwiseRankingLoss
+from src.score_function import score_llm
+from src.bayesian_optimazation_models import SurrogateModel, AcquisitionFunction
+from src.loss_functions import PairwiseRankingLoss
 
 model_size = 'large'
 method = 'black_box'
