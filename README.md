@@ -64,7 +64,7 @@ Upon completion, the code will generate a `submission_large.zip` file, which you
 
 ## Timing
 
-The execution of the `tdc2023_black_box` code is  timed to take 96 hours, divided as follows:
+The execution of the `tdc2023_black_box` code is  timed to take 96 hours (on A-100 Google Colab), divided as follows:
 
 - **54 hours**: Generating triggers for 80 targets using the black-box method, where the embedding layer is sourced from the Pythia-410M model. 
 
