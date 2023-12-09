@@ -2,7 +2,7 @@
 
 Black Box Method for Trojan Detection Challenge 2023, Organized by NeurIPS
 
-# Objective
+## Objective
 
 This method is designed to find a specific "trigger string" that, when input into a language model like GPT, increases the likelihood of the model generating a predetermined "target string". The approach doesn't require understanding the internal workings of the language model, making it a "black-box" method. Bayesian optimization, a statistical technique, is employed to efficiently search for the best trigger string.
 
@@ -53,3 +53,11 @@ For each target string:
 - **Iterative Optimization**: Repeat the steps from "Coordinate Selection" to "Optimization", starting each cycle with the best strings from the previous iteration. This continuous process enhances the chances of finding an effective trigger string.
 
 - **Random Restart**: After a certain number of epochs, start over with a new random trigger string. This method help in exploring various areas of the trigger string space that may have been missed in the initial iterations. Moreover, this restart will assist in generating multiple triggers per target string, not just one.
+
+## How to Run
+
+To execute the `tdc2023_black_box` method, ensure you have an NVIDIA A-100 GPU for optimal performance. First, clone the repository and install all necessary dependencies. 
+
+Run the script with `python main.py` in your console. This process is designed to run for 4 days on the A-100 GPU, so monitor it accordingly. 
+
+Upon completion, the code will generate a `submission_large.zip` file, which you can submit for evaluation of the method's effectiveness.
