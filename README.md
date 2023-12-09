@@ -48,7 +48,7 @@ For each target string:
 
 - **Trigger Update**: If any of the new trigger strings prove more effective than the current best one, update the trigger string. This iterative improvement is central to finding the most effective trigger.
 
-- **Optimization**: Perform gradient descent on the surrogate model parameters (not on the LLM). The goal is to minimize the discrepancy between its predictions and the actual results obtained from the score function. This step refines the surrogate model, making it a more accurate predictor of trigger string effectiveness.
+- **Optimization**: Perform gradient descent on the surrogate model parameters (not on the LLM). The goal is to minimize the discrepancy between its predictions and the actual results obtained from the score function. This step refines the surrogate model, making it a more accurate predictor of the score function.
 
 - **Iterative Optimization**: Repeat the steps from "Coordinate Selection" to "Optimization", starting each cycle with the best strings from the previous iteration. This continuous process enhances the chances of finding an effective trigger string.
 
