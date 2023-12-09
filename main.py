@@ -10,8 +10,6 @@ def signal_handler(signum, frame):
 # Function to run training with a time limit
 def run_with_timeout(training_func, seconds):
     # Print statement to indicate the start of the training function
-    print(f"Starting training for {training_func.__name__}")
-
     # Set the signal handler for the alarm signal
     signal.signal(signal.SIGALRM, signal_handler)
     # Schedule an alarm after 'seconds' seconds
@@ -27,7 +25,9 @@ def run_with_timeout(training_func, seconds):
         print(f"Training for {training_func.__name__} completed or stopped due to timeout.")
 
 # Run training_pythia with a 54-hour limit (194400 seconds)
-run_with_timeout(training_pythia, 120)
+print(f"Starttraining using Embedding from pythia-410m")
+run_with_timeout(training_pythia, 7200)
 
 # Run training_gpt with a 41-hour limit (147600 seconds)
-run_with_timeout(training_gpt, 120)
+print(f"Start training using Embedding from gpt2")
+run_with_timeout(training_gpt, 7200)
