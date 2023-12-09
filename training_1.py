@@ -51,14 +51,11 @@ with torch.no_grad():
 
 del embedding_model
 
-file_path = f'{model_size}_{phase}_{dataset}_{method}.json'
-print(file_path)
-
-import os
-import json
-
-# Get the directory of the current script
 script_dir = os.path.dirname(os.path.realpath(__file__))
+
+file_path = os.path.join(script_dir, f'{model_size}_{phase}_{dataset}_{method}.json')
+file_path = f'/content/drive/MyDrive/{model_size}_{phase}_{dataset}_{method}.json'
+print(file_path)
 
 targets_test_path = os.path.join(script_dir, f'data/{phase}/targets_test.json')
 with open(targets_test_path) as f:
