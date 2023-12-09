@@ -25,8 +25,6 @@ def run_with_timeout(training_func, seconds):
         print(f"Training for {training_func.__name__} completed or stopped due to timeout.")
 
 # Run training_pythia with a 54-hour limit (194400 seconds)
-print()
-print()
 print(f"Start training using Embedding from pythia-410m")
 print("This function will finish after 54 hours")
 print()

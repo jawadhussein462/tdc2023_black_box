@@ -95,10 +95,6 @@ def run(file_path):
 
   #######################################################################################################################
 
-  print(f"{'Epoch':^7} | {'Score':^12} | {'Train Loss':^12} | {'Elapsed':^9}")
-  print("-" * 70)
-  print()
-
   accumulated_loss = 0
 
   for i, target in enumerate(targets):
