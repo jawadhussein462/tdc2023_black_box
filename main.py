@@ -1,7 +1,7 @@
 import signal
 from src import training_pythia, training_gpt, prepare_submission
 
-file_path = "/content/drive/MyDrive/large_test_test_black_box.json"
+file_path = "large_test_test_black_box.json"
 
 # Handler function to raise a TimeoutError
 def signal_handler(signum, frame):

@@ -61,3 +61,15 @@ To execute the `tdc2023_black_box` method, ensure you have an NVIDIA A-100 GPU f
 Run the script with `python main.py` in your console. This process is designed to run for 4 days on the A-100 GPU, so monitor it accordingly. 
 
 Upon completion, the code will generate a `submission_large.zip` file, which you can submit for evaluation of the method's effectiveness.
+
+## Timing
+
+The execution of the `tdc2023_black_box` code is  timed to take 96 hours, divided as follows:
+
+- **54 hours**: Generating triggers for 80 targets using the black-box method, where the embedding layer is sourced from the Pythia-410M model. 
+
+- **41 hours**: Generating additional triggers for the 60 lowest-performing targets from the first phase. In this stage, the embedding layer is taken from the GPT-2 model, aiming to enhance trigger effectiveness specifically for these targets.
+
+- **1 hour**: Applying a set of filters to the generated triggers and preparing the final submission. This involves refining and selecting the most effective triggers for submission in the `submission_large.zip` file.
+
+This structured timeline ensures a comprehensive and systematic approach to trigger generation and optimization over the 96-hour period.
