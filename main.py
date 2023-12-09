@@ -40,7 +40,6 @@ print()
 print()
 run_with_timeout(training_gpt, 147600)
 
-# Run training_gpt with a 41-hour limit (147600 seconds)
 print()
 print()
 print(f"Preparing submission")
