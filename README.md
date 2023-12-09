@@ -10,7 +10,7 @@ This method is designed to find a specific "trigger string" that, when input int
 
 ### Score Function
 
-This function calculates how likely it is for the language model to produce the target string when given a trigger string. It uses logits, which are the direct outputs of the language model, to make this process quick and flexible for different models.
+This function calculates how likely it is for the language model to produce the target string when given a trigger string. It uses logits, which are the direct outputs of the language model, to make this process quick and flexible for different models. This is the black box scoring function
 
 ### Surrogate Model
 
@@ -40,7 +40,7 @@ For each target string:
 
 - **Token Replacement and Variant Creation**: At the selected position, generate various new strings, each substituting the original token with a different one. These variants are potential new trigger strings. This step is vital for exploring the effectiveness of different tokens in influencing the model's output.
 
-- **Surrogate Model Assessment**: Run these new string variants through the surrogate model. The model predicts how likely each variant is to trigger the target string. This step helps in narrowing down the most promising candidates without having to test each one in the actual language model.
+- **Surrogate Model Assessment**: Run these new string variants through the surrogate model. The model predicts an approximation of the exact value of the scoring function.
 
 - **Acquisition Function Application**: Apply the acquisition function to the predictions from the surrogate model. Select the top 24 string variants based on their estimated effectiveness. This function balances exploring new strings (exploration) and refining the best ones found (exploitation).More precisely, it penalizes the score of the strings already selected so that they are not selected again.
 
