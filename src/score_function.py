@@ -30,6 +30,7 @@ def score_llm(input_str, taget_str, model, tokenizer, device):
         # Prepare the target ids
         batch_size = input_ids.shape[0]
         target_ids = tokenizer(taget_str, return_tensors='pt')
+        print(target_ids)
         target_ids = target_ids.repeat(batch_size, 1)
         target_attention_mask = torch.ones_like(target_ids)
 
