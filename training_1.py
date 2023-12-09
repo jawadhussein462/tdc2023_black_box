@@ -158,7 +158,7 @@ for i, target in enumerate(targets):
     NUM_EPOCHS = 100*LEN_COORDINATES
     coordinates = list(range(LEN_COORDINATES))
 
-    with tqdm(range(NUM_EPOCHS), desc="Best Score: 0", unit="epoch") as pbar:
+    with tqdm(range(NUM_EPOCHS), desc=f"Best Score: {best_score}", unit="epoch") as pbar:
       for current_epoch in pbar:
 
         if current_epoch%LEN_COORDINATES == 0:
