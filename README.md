@@ -36,20 +36,20 @@ For each target string:
 
 3. **Iterative Process (across several epochs)**
 
-- **Coordinate Selection**: Randomly pick a position within the trigger string. This position is where a token (word or character, depending on the model's granularity) will be changed. This step introduces variability in the trigger strings.
+- **Coordinate Selection**: Randomly pick a position within the trigger string. This position is where a token will be changed. This step introduces variability in the trigger strings.
 
 - **Token Replacement and Variant Creation**: At the selected position, generate various new strings, each substituting the original token with a different one. These variants are potential new trigger strings. This step is vital for exploring the effectiveness of different tokens in influencing the model's output.
 
 - **Surrogate Model Assessment**: Run these new string variants through the surrogate model. The model predicts how likely each variant is to trigger the target string. This step helps in narrowing down the most promising candidates without having to test each one in the actual language model.
 
-- **Acquisition Function Application**: Apply the acquisition function to the predictions from the surrogate model. Select the top 24 string variants based on their estimated effectiveness. This function balances exploring new strings (exploration) and refining the best ones found (exploitation).
+- **Acquisition Function Application**: Apply the acquisition function to the predictions from the surrogate model. Select the top 24 string variants based on their estimated effectiveness. This function balances exploring new strings (exploration) and refining the best ones found (exploitation).More precisely, it penalizes the score of the strings already selected so that they are not selected again.
 
-- **Score Function Evaluation**: Use the score function to empirically measure the effectiveness of these top 24 triggers. This step involves inputting each trigger string into the actual language model and observing how likely it is to produce the target string.
+- **Score Function Evaluation**: Use the score function to empirically measure the effectiveness of these top 24 triggers. This step involves inputting each trigger string into the actual language model and observing how likely it is to produce the target string. so we will use only the logits nothing else.
 
 - **Trigger Update**: If any of the new trigger strings prove more effective than the current best one, update the trigger string. This iterative improvement is central to finding the most effective trigger.
 
-- **Optimization**: Perform gradient descent on the surrogate model parameters. The goal is to minimize the discrepancy between its predictions and the actual results obtained from the score function. This step refines the surrogate model, making it a more accurate predictor of trigger string effectiveness.
+- **Optimization**: Perform gradient descent on the surrogate model parameters (not on the LLM). The goal is to minimize the discrepancy between its predictions and the actual results obtained from the score function. This step refines the surrogate model, making it a more accurate predictor of trigger string effectiveness.
 
 - **Iterative Optimization**: Repeat the steps from "Coordinate Selection" to "Optimization", starting each cycle with the best strings from the previous iteration. This continuous process enhances the chances of finding an effective trigger string.
 
-- **Random Restart (optional)**: Sometimes, it might be beneficial to start over with a new random trigger string. This approach can help explore different areas of the trigger string space that might have been missed in the initial iterations.
+- **Random Restart**: After a certain number of epochs, start over with a new random trigger string. This method help in exploring various areas of the trigger string space that may have been missed in the initial iterations. Moreover, this restart will assist in generating multiple triggers per target string, not just one.
