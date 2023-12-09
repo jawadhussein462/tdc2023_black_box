@@ -153,7 +153,8 @@ for i, target in enumerate(targets):
                                         add_special_tokens=False,
                                         truncation=True).to(device)
 
-    best_score = score_llm(best_string, target, model, tokenizer, device).item()
+    input_str = black_box_tokenizer.batch_decode(best_string_ids)
+    best_score = score_llm(input_str, target, model, tokenizer, device).item()
 
     NUM_EPOCHS = 100*LEN_COORDINATES
     coordinates = list(range(LEN_COORDINATES))
