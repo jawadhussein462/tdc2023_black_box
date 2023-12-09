@@ -1,5 +1,5 @@
 import signal
-from src import training_pythia, training_gpt
+from src import training_pythia, training_gpt, prepare_submission
 
 file_path = "/content/drive/MyDrive/large_test_test_black_box.json"
 
@@ -29,7 +29,7 @@ print(f"Start training using Embedding from pythia-410m")
 print("This function will finish after 54 hours")
 print()
 print()
-run_with_timeout(training_pythia, 7200)
+run_with_timeout(training_pythia, 60)
 
 # Run training_gpt with a 41-hour limit (147600 seconds)
 print()
@@ -38,4 +38,12 @@ print(f"Start training using Embedding from gpt2")
 print("This function will finish after 41 hours")
 print()
 print()
-run_with_timeout(training_gpt, 7200)
+run_with_timeout(training_gpt, 60)
+
+# Run training_gpt with a 41-hour limit (147600 seconds)
+print()
+print()
+print(f"Preparing submission")
+print()
+print()
+prepare_submission(file_path)
