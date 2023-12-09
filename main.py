@@ -27,7 +27,7 @@ def run_with_timeout(training_func, seconds):
         print(f"Training for {training_func.__name__} completed or stopped due to timeout.")
 
 # Run training_pythia with a 54-hour limit (194400 seconds)
-run_with_timeout(training_pythia, 194400)
+run_with_timeout(training_pythia, 120)
 
 # Run training_gpt with a 41-hour limit (147600 seconds)
-run_with_timeout(training_gpt, 147600)
+run_with_timeout(training_gpt, 120)
