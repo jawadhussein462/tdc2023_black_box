@@ -49,4 +49,4 @@ print()
 import os 
 script_dir = os.path.dirname(os.path.realpath(__file__))
 file_path = os.path.join(script_dir, "/data/test/large/trojan_specifications_train_test_large.json")
-prepare_submission.run("/data/test/large/trojan_specifications_train_test_large.json")
+prepare_submission.run(file_path)
