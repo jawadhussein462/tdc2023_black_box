@@ -54,16 +54,17 @@ def run(file_path):
   del embedding_model
 
   script_dir = os.path.dirname(os.path.realpath(__file__))
+  parent_dir = os.path.dirname(script_dir)
 
-  targets_test_path = os.path.join(script_dir, f'data/{phase}/targets_test.json')
+  targets_test_path = os.path.join(parent_dir, f'data/{phase}/targets_test.json')
   with open(targets_test_path) as f:
       targets_test = json.load(f)
 
-  targets_train_path = os.path.join(script_dir, f'data/{phase}/targets_train.json')
+  targets_train_path = os.path.join(parent_dir, f'data/{phase}/targets_train.json')
   with open(targets_train_path) as f:
       targets_train = json.load(f)
 
-  predictions_train_path = os.path.join(script_dir, f'data/{phase}/{model_size}/trojan_specifications_train_{phase}_{model_size}.json')
+  predictions_train_path = os.path.join(parent_dir, f'data/{phase}/{model_size}/trojan_specifications_train_{phase}_{model_size}.json')
   with open(predictions_train_path) as f:
       predictions_train = json.load(f)
 
