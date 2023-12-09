@@ -10,7 +10,7 @@ This method is designed to find a specific "trigger string" that, when input int
 
 ### Score Function
 
-This function calculates how likely it is for the language model to produce the target string when given a trigger string. It uses logits, which are the direct outputs of the language model, to make this process quick and flexible for different models. This is the black box scoring function
+This function calculates how likely it is for the language model to produce the target string when given a trigger string. It uses logits. This is the black box scoring function
 
 ### Surrogate Model
 
