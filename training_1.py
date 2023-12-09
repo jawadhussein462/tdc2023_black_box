@@ -54,14 +54,24 @@ del embedding_model
 file_path = f'{model_size}_{phase}_{dataset}_{method}.json'
 print(file_path)
 
-with open(f'/tdc2023-starter-kit/trojan_detection/data/{phase}/targets_test.json') as f:
+import os
+import json
+
+# Get the directory of the current script
+script_dir = os.path.dirname(os.path.realpath(__file__))
+
+targets_test_path = os.path.join(script_dir, f'tdc2023-starter-kit/trojan_detection/data/{phase}/targets_test.json')
+with open(targets_test_path) as f:
     targets_test = json.load(f)
 
-with open(f'/tdc2023-starter-kit/trojan_detection/data/{phase}/targets_train.json') as f:
+targets_train_path = os.path.join(script_dir, f'tdc2023-starter-kit/trojan_detection/data/{phase}/targets_train.json')
+with open(targets_train_path) as f:
     targets_train = json.load(f)
 
-with open(f'/tdc2023-starter-kit/trojan_detection/data/{phase}/{model_size}/trojan_specifications_train_{phase}_{model_size}.json') as f:
+predictions_train_path = os.path.join(script_dir, f'tdc2023-starter-kit/trojan_detection/data/{phase}/{model_size}/trojan_specifications_train_{phase}_{model_size}.json')
+with open(predictions_train_path) as f:
     predictions_train = json.load(f)
+
 
 # Check if the file exists, if not, create it with an empty JSON object
 if not os.path.exists(file_path) or restart:
