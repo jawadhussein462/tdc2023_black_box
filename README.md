@@ -32,7 +32,7 @@ For each target string:
 
 2. **Initial String Generation**
 
-- **Starting Point**: Generate an initial trigger string randomly. This string serves as the starting point for the optimization process. It's important that this string is random to ensure a broad and unbiased exploration of the trigger string space.
+- **Starting Point**: Generate an initial trigger string randomly. This string serves as the starting point for the optimization process. This string could also be sampled from the list of triggers in the training dataset.
 
 3. **Iterative Process (across several epochs)**
 
