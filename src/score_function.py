@@ -20,6 +20,10 @@ def score_llm(input_str, taget_str, model, tokenizer, device):
     This function assumes that the model and tokenizer have been appropriately initialized and that the device is correctly set for running the model.
     """
     with torch.no_grad():
+
+        if isinstance(input_str, str):
+            input_str = [input_str]
+
         # Tokenize the input string
         input_tokenized = tokenizer(input_str, return_tensors='pt', padding=True)
 
