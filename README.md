@@ -13,13 +13,14 @@ This method is designed to find a specific "trigger string" that, when input int
 This function calculates the probabilty for the language model to produce the target string when given a trigger string. It uses logits. This is the black box scoring function.
 The primary objective is to find trigger strings that maximize the probability of the language model generating a given target string.
 
+$$
 The probability \( P(target | trigger) \) of the language model producing the target string given the trigger string is calculated using the formula:
 
 \[ P(target | trigger) = \frac{\exp(logits(target | trigger))}{\sum_{\text{all possible strings}} \exp(logits(string | trigger))} \]
 
 - \( \exp(logits(target | trigger)) \): This represents the exponential of the logits for the target string given the trigger string, effectively converting logits to probabilities.
 - The denominator is the sum of the exponentials of logits for all possible strings given the trigger string, ensuring normalization of the probability across all possible outcomes.
-
+$$
 
 ### Surrogate Model
 
