@@ -59,7 +59,7 @@ print()
 print(f"Preparing submission")
 print()
 print()
-prepare_submission.(file_path, 
-                    model, 
-                    tokenizer, 
-                    device)
+prepare_submission.run(file_path, 
+                       model, 
+                       tokenizer, 
+                       device)
