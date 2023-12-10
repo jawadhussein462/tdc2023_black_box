@@ -1,7 +1,18 @@
 import signal
 from src import training_pythia, training_gpt, prepare_submission
+from transformers import GPTNeoXForCausalLM, GPTNeoXTokenizerFast
+from transformers import AutoTokenizer, AutoModelForCausalLM, AutoModelForMaskedLM
+
+import torch
 
 file_path = "large_test_test_black_box.json"
+
+trojan_model_path ='TDC2023/trojan-large-pythia-6.9b-test-phase'
+tokenizer = GPTNeoXTokenizerFast.from_pretrained(trojan_model_path, padding_side='left')
+tokenizer.pad_token = tokenizer.eos_token
+model = GPTNeoXForCausalLM.from_pretrained(trojan_model_path, torch_dtype=torch.float16, device_map="balanced").eval()
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+model = model.to(device)
 
 # Handler function to raise a TimeoutError
 def signal_handler(signum, frame):
@@ -15,7 +26,10 @@ def run_with_timeout(training_func, seconds):
     # Schedule an alarm after 'seconds' seconds
     signal.alarm(seconds)
     try:
-        training_func.run(file_path)
+        training_func.run(file_path, 
+                          model, 
+                          tokenizer, 
+                          device)
     except TimeoutError:
         print(f"Training time for {training_func.__name__} exceeded {seconds} seconds. Stopping training.")
     finally:
@@ -45,4 +59,7 @@ print()
 print(f"Preparing submission")
 print()
 print()
-prepare_submission.run(file_path)
+prepare_submission.(file_path, 
+                    model, 
+                    tokenizer, 
+                    device)

@@ -102,7 +102,11 @@ def filter(generated_triggers, train_triggers_list, model, tokenizer):
 
     return final_triggers
 
-def run(file_path):
+def run(file_path,
+        model,
+        tokenizer,
+        device): 
+    
     """
     Main function to process the input file with generated triggers.
 
@@ -121,15 +125,6 @@ def run(file_path):
         predictions_train = json.load(f)
 
     train_triggers_list = [v for values in predictions_train.values() for v in values]
-
-    # Set up the model and tokenizer
-    trojan_model_path = 'TDC2023/trojan-large-pythia-6.9b-test-phase'
-    tokenizer = GPTNeoXTokenizerFast.from_pretrained(trojan_model_path, padding_side='left')
-    tokenizer.pad_token = tokenizer.eos_token
-    model = GPTNeoXForCausalLM.from_pretrained(trojan_model_path, torch_dtype=torch.float16, device_map="balanced").eval()
-
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    model = model.to(device)
 
     # Filter triggers
     final_triggers = filter(generated_triggers, train_triggers_list, model, tokenizer)

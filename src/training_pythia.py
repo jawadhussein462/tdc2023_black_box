@@ -13,7 +13,10 @@ from src.score_function import score_llm
 from src.bayesian_optimazation_models import SurrogateModel, AcquisitionFunction
 from src.loss_functions import PairwiseRankingLoss
 
-def run(file_path):   
+def run(file_path,
+        model,
+        tokenizer,
+        device):  
 
   model_size = 'large'
   method = 'black_box'
@@ -31,19 +34,7 @@ def run(file_path):
   criterion = PairwiseRankingLoss()
 
   #######################################################################################################################
-
-  if model_size == 'base':
-    trojan_model_path = "TDC2023/trojan-base-pythia-1.4b-test-phase"
-  else:
-    trojan_model_path ='TDC2023/trojan-large-pythia-6.9b-test-phase'
-
-  tokenizer = GPTNeoXTokenizerFast.from_pretrained(trojan_model_path, padding_side='left')
-  tokenizer.pad_token = tokenizer.eos_token
-  model = GPTNeoXForCausalLM.from_pretrained(trojan_model_path, torch_dtype=torch.float16, device_map="balanced").eval()
-
-  device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-  model = model.to(device)
-
+  
   black_box_tokenizer = AutoTokenizer.from_pretrained("EleutherAI/pythia-410m", padding_side='left')
   black_box_tokenizer.pad_token = black_box_tokenizer.eos_token
   embedding_model = AutoModelForCausalLM.from_pretrained("EleutherAI/pythia-410m").eval()
