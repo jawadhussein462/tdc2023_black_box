@@ -14,7 +14,7 @@ This function calculates how likely it is for the language model to produce the 
 
 ### Surrogate Model
 
-In Bayesian optimization, this smaller neural network mimics the larger language model's behavior. It begins with an embedding layer, which can be sourced from any standard language model. For example, we can use embeddings from the "Pythia-410M" model. The surrogate model's role is to predict how effective different trigger strings might be.
+In Bayesian optimization, a smaller neural network, known as the surrogate model, is used to mimic the larger language model's behavior. The objective of this surrogate model is to approximate the black box scoring function. Typically, this neural network begins with an embedding layer, which can be sourced from various standard language models. For example, embeddings from a model like GPT-2, Pythia-410M.
 
 ### Acquisition Function
 
