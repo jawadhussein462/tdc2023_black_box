@@ -60,7 +60,7 @@ For each target string:
 
 ## How to Run
 
-To execute the `tdc2023_black_box` method, ensure you have an NVIDIA A-100 GPU for optimal performance. First, clone the repository and install all necessary dependencies. 
+To execute the `tdc2023_black_box` method, ensure you have an A-100 GPU for optimal performance. First, clone the repository and install all necessary dependencies. 
 
 Run the script with `python main.py` in your console. This process is designed to run for 4 days on the A-100 GPU, so monitor it accordingly. 
 
