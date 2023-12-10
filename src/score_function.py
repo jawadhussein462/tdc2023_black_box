@@ -43,10 +43,10 @@ def score_llm(input_str, taget_str, model, tokenizer, device):
 
         # Get model outputs
         outputs = model(combined_ids, attention_mask=combined_attention_msk)
-
-        # Extract logits and compute probabilities
-        target_length = target_ids.shape[1]
         logits = outputs.logits.contiguous()
+
+        # compute probabilities
+        target_length = target_ids.shape[1]
         probs = logits - logits.logsumexp(2, keepdim=True)
 
         # Select probabilities corresponding to the target sequence
