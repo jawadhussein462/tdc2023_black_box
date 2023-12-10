@@ -10,13 +10,11 @@ This method is designed to find a specific "trigger string" that, when input int
 
 ### Score Function
 
-This function calculates the probabilty for the language model to produce the target string when given a trigger string. It uses logits. This is the black box scoring function.
+This function calculates the probabilty for the language model to produce the target string when given a trigger string. It only uses logits. This is the black box scoring function.
 
 Score function =  The probability  $P(target | trigger)$ of the language model producing the target string given the trigger string.
 
-The score function could also be expressed in logarithm format to facilate calculation.
-
-The primary objective of this code is for each target string, find the trigger string the maximise the probabilty of the target string.
+The score function can also be expressed in logarithmic format to facilitate calculation. The primary objective of this code is, for each target string, to find the trigger string that maximizes the probability of the target string.
 
 ### Surrogate Model
 
