@@ -130,6 +130,8 @@ def run(file_path,
     final_triggers = filter(generated_triggers, train_triggers_list, model, tokenizer)
     final_triggers = filter(final_triggers, train_triggers_list, model, tokenizer)
 
+    print(final_triggers)
+    
     # Save the final triggers
     with open('predictions.json', 'w') as f:
         json.dump(final_triggers, f)
